@@ -1,0 +1,243 @@
+@import "./mixin.scss";
+@import "./variables.scss";
+
+//General
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #F0F0F0;
+}
+
+.content_main {
+  display: flex;
+  flex-direction: row;
+  height: 550px;
+  width: 900px;
+  background-color: white;
+  .content_info {
+    background: url("../img/bg-pattern-desktop.svg") no-repeat center / cover;
+    width: 60%;
+    height: 100%;
+    padding: 3rem 4.4rem;
+    header {
+      img {
+        width: 100px;
+      }
+    }
+    .info {
+      margin-top: 4rem;
+      h1 {
+        letter-spacing: 10px;
+        text-transform: uppercase;
+        font-weight: 300;
+        color: $Desaturated-red;
+        font-size: 3rem;
+      }
+      span {
+        letter-spacing: 10px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 2.7rem;
+      }
+      p {
+        margin: 1.4rem 0 1.5rem 0;
+        font-weight: 400;
+        font-size: 15px;
+        color: $Desaturated-red;
+      }
+      form {
+        position: relative;
+        .content_input {
+          input {
+            width: 100%;
+            padding: 0.8em 0.6em 0.8em 2em;
+            border-radius: 100px;
+            border: 1px solid $Desaturated-red;
+            &::placeholder {
+              color: $Desaturated-red;
+            }
+            &:invalid:focus:not(:placeholder-shown) {
+              border: 1px solid $Soft-red;
+              & ~ .requirements {
+                max-height: 100px;
+              }
+              & ~ span {
+                position: absolute;
+                top: 50%;
+                right: 90px;
+                transform: translateY(-50%);
+                display: block;
+              }
+            }
+          }
+          span {
+            display: none;
+          }
+          .requirements {
+            position: absolute;
+            color: #999;
+            max-height: 0;
+            font-size: 0.8rem;
+            transition: 0.28s;
+            padding-top: 0.8em;
+            padding-left: 1rem;
+            overflow: hidden;
+            color: $Soft-red;
+          }
+        }
+        button {
+          position: absolute;
+          top: 50%;
+          right: -4px;
+          transform: translateY(-50%);
+          border: none;
+          width: 80px;
+          padding: 0.7em 0;
+          border-radius: 100px;
+          background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+          box-shadow: 0 0 10px 1px hsl(0, 74%, 74%);
+          cursor: pointer;
+          &:hover {
+            background: linear-gradient(135deg, hsl(0, 89%, 89%), hsl(0, 85%, 82%));
+          }
+        }
+      }
+    }
+    .responsive_photo {
+      display: none;
+    }
+  }
+  .content_photo {
+    width: 40%;
+    height: 100%;
+    background: url("../img/hero-desktop.jpg") no-repeat center / cover;
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+//Responsive
+@include breakpoint(xs) {
+  body {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+  .content_main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .content_info {
+      background: white;
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      header {
+        margin-left: -2rem !important;
+      }
+      .responsive_photo {
+        position: absolute;
+        display: block;
+        left: 0;
+        margin-top: 2em;
+        width: 100%;
+        height: 200px;
+        background: url("../img/hero-mobile.jpg") no-repeat top center/ cover;
+      }
+    }
+    .info {
+      margin-top: 17rem !important;
+      text-align: center;
+      margin-bottom: 3rem;
+      p {
+        margin-bottom: 3rem !important;
+      }
+      form {
+        .content_input {
+          input {
+            padding: 0.5em 0.6em 0.5em 2em;
+          }
+        }
+      }
+    }
+    .content_photo {
+      display: none;
+    }
+  }
+}
+
+@include breakpoint(sm) {
+  body {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+  .content_main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .content_info {
+      background: white;
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      header {
+        margin-left: -2rem !important;
+      }
+      .responsive_photo {
+        position: absolute;
+        display: block;
+        left: 0;
+        margin-top: 2em;
+        width: 100%;
+        height: 200px;
+        background: url("../img/hero-mobile.jpg") no-repeat top center/ cover;
+      }
+    }
+    .info {
+      margin-top: 17rem !important;
+      text-align: center;
+      margin-bottom: 3rem;
+      p {
+        margin-bottom: 3rem !important;
+      }
+      form {
+        .content_input {
+          input {
+            padding: 0.5em 0.6em 0.5em 2em;
+          }
+        }
+      }
+    }
+    .content_photo {
+      display: none;
+    }
+  }
+}
+
+@include breakpoint(md) {
+  .content_main {
+    width: 760px;
+  }
+}
